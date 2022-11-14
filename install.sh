@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/bash
 
 sudo apt install curl gnupg apt-transport-https -y
 
