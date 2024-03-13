@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt update && sudo apt install -y lsb-release && sduo apt clean all
+
 # Declare a temporary variable 'version'
 distribution="1.0"
 # Get the OS version
@@ -23,8 +25,6 @@ else
         exit 1
 fi
 
-apt update && apt install sudo -y
-sudo apt install -y lsb-release && sduo apt clean all
 sudo apt install curl gnupg apt-transport-https -y
 
 ## Team RabbitMQ's main signing key
