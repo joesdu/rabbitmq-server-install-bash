@@ -15,7 +15,7 @@ then
 elif [ "$os_version" == "22.04" ] || [ "$os_version" == "23.04" ] || [ "$os_version" == "23.10" ]
 then
         distribution="jammy"
-elif [ "$os_version" == "bullseye" ] || [ "$os_version" == "bookworm" ] || [ "$os_version" == "sid" ]
+elif [ "$os_version" == "10" ] || [ "$os_version" == "11" ] || [ "$os_version" == "12" ]
 then
         distribution="bullseye"
 else
