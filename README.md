@@ -1,6 +1,6 @@
 ### rabbitmq-server-install-bash
 
-RabbitMQ Server 一键安装脚本.
+RabbitMQ Server 一键安装脚本.本脚本只针对了 Ubuntu 和 Debian,并且系统版本仅限下面列表中的版本,并没有做非常严谨的判断.别的系统可以通过提交 PR 来支持.
 
 ```bash
 curl -s https://raw.githubusercontent.com/joesdu/rabbitmq-server-install-bash/main/install.sh | sudo bash
