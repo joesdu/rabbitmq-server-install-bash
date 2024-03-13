@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sudo apt update && sudo apt install -y lsb-release && sduo apt clean all
-
 # Declare a temporary variable 'version'
 distribution="1.0"
 # Get the OS version
