@@ -1,14 +1,4 @@
-#!/bin/sh
-
-## 安装基础的依赖和工具包
-sudo apt install curl gnupg apt-transport-https -y
-
-## Team RabbitMQ's main signing key
-curl -1sLf "https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA" | sudo gpg --dearmor | sudo tee /usr/share/keyrings/com.rabbitmq.team.gpg > /dev/null
-## Community mirror of Cloudsmith: modern Erlang repository
-curl -1sLf https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key | sudo gpg --dearmor | sudo tee /usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg > /dev/null
-## Community mirror of Cloudsmith: RabbitMQ repository
-curl -1sLf https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-server.9F4587F226208342.key | sudo gpg --dearmor | sudo tee /usr/share/keyrings/rabbitmq.9F4587F226208342.gpg > /dev/null
+#!/bin/bash
 
 # Declare a temporary variable 'version'
 distribution="1.0"
@@ -19,7 +9,7 @@ os_version=$(lsb_release -rs)
 if [ "$os_version" == "18.04" ]
 then
         distribution="bionic"
-if [ "$os_version" == "20.04" ]
+elif [ "$os_version" == "20.04" ]
 then
         distribution="focal"
 elif [ "$os_version" == "22.04" ] || [ "$os_version" == "23.04" ] || [ "$os_version" == "23.10" ]
@@ -32,6 +22,15 @@ else
         echo "Unsupported OS Version"
         exit 1
 fi
+
+sudo apt install curl gnupg apt-transport-https -y
+
+## Team RabbitMQ's main signing key
+curl -1sLf "https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA" | sudo gpg --dearmor | sudo tee /usr/share/keyrings/com.rabbitmq.team.gpg > /dev/null
+## Community mirror of Cloudsmith: modern Erlang repository
+curl -1sLf https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key | sudo gpg --dearmor | sudo tee /usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg > /dev/null
+## Community mirror of Cloudsmith: RabbitMQ repository
+curl -1sLf https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-server.9F4587F226208342.key | sudo gpg --dearmor | sudo tee /usr/share/keyrings/rabbitmq.9F4587F226208342.gpg > /dev/null
 
 ## Add apt repositories maintained by Team RabbitMQ
 sudo tee /etc/apt/sources.list.d/rabbitmq.list <<EOF
